@@ -249,7 +249,44 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  if (!Array.isArray(matrix) || matrix.length === 0) return 0;
+
+  let maxProduct = 0;
+
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[row].length; col++) {
+
+    // Horizontal
+    if (col + 3 < matrix[row].length)  {
+      const HorizProduct =
+      matrix[row][col] *
+      matrix[row][col + 1] *
+      matrix[row][col + 2] *
+      matrix[row][col + 3]
+
+      if (HorizProduct > maxProduct) maxProduct = HorizProduct;
+  }
+
+
+  // Vertical
+  if (row + 3 < matrix.length) {
+    const vertProduct =
+    matrix[row][col] *
+    matrix[row + 1][col] *
+    matrix[row + 2][col] *
+    matrix[row + 3][col];
+
+
+    if (vertProduct > maxProduct) maxProduct = vertProduct;
+
+  }
+  }
+}
+
+return maxProduct
+
+}
 
 
 
